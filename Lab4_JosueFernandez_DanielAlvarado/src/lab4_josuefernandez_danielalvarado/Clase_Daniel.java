@@ -262,7 +262,7 @@ public class Clase_Daniel {
                                 
         }
         
-        criminales.add(new Criminal(nombre, edad, genero, residencia, estaPreso, descripcion));
+        //criminales.add(new Criminal(nombre, edad, genero, residencia, estaPreso, descripcion));
         
         System.out.println("Se agrego un nuevo criminal a la lista");
         System.out.println();

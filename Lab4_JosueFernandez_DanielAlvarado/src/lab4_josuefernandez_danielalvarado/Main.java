@@ -45,6 +45,11 @@ public class Main {
             
             switch(opcion){
                 case 1:
+                    if (contadorCriminales==0) {
+                        System.out.println("No hay criminales que cometan delitos.");
+                        break;
+                    }
+                    
                     try {
                         System.out.println("OPCIONES\n");
                         System.out.println("1. Delito menor");
@@ -88,6 +93,7 @@ public class Main {
                     }
                     break;
                 case 5:
+                    crearCriminal();
                     break;
                 case 6:
                     break;
@@ -128,8 +134,6 @@ public class Main {
                 case 13:
                     break;
                 case 14:
-                    break;
-                case 15:
                     break;
                 default:
                     System.out.println("Opción no válida.");
@@ -389,6 +393,8 @@ public class Main {
                 break;
         }
         
+        
+        
     }
     
     public static void crearGrave(String descripcion, String nombreVictima, boolean culpable, String sentencia, String fecha, String pais, int numDelito){
@@ -503,11 +509,38 @@ public class Main {
                 contadorDelitos++;
                 break;
         }
+        
+        listarCriminales();
+
+        flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del criminal que cometió el crimen: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > criminales.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag = true;
+                System.out.println();
+            }
+        }
+        
+        criminales.get(indice).getDelitos().add(delitos.get(delitos.size()-1));
+        
     }
     
     
     //Método para modificar ...
     public void modificarObjeto(){
+        
         
         listarObjetos();
         System.out.print("\nIngrese el _______ que desea mofidicar: ");
@@ -770,6 +803,138 @@ public class Main {
         //Polimorfismo al delinquir
         agentes.get(indice).CometerDelito();
         
+    }
+    
+    public static void crearCriminal(){
+        System.out.println("-> Crea un criminal");
+        System.out.println();
+        
+        System.out.print("-> Ingrese el nombre del criminal: ");
+        String nombre = sc.next();
+        System.out.println();
+        
+        boolean flag = true;
+        int edad = 0;
+        
+        while(flag){
+            try{
+                System.out.print("-> Ingrese la edad del criminal: ");
+                edad = sc.nextInt();
+                
+                while(edad < 0 || edad > 130){
+                    System.out.print("-> La edad ingresada no es valida! Igrese de nuevo: ");
+                    edad = sc.nextInt();
+                }
+                
+                flag = false;
+            }catch(InputMismatchException e){
+                System.out.println("-> El tipo de dato ingresado no es correcto!");
+                System.out.println();
+                flag = true;
+            }
+        }
+        
+        int gen = 0;
+        while(gen!=1 && gen!=2){
+            try {
+                System.out.println("\nGénero");
+                System.out.println("1. Masculino");
+                System.out.println("2. Femenino");
+                System.out.print("\nIngrese el género: ");
+                gen = sc.nextInt();
+                
+                while(gen!=1 && gen!=2){
+                    System.out.print("\tIngrese una opción válida: ");
+                    gen = sc.nextInt();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                gen=0;
+            }
+        }
+        
+        String genero = (gen==1) ? "Masculino" : "Femenino";
+        sc.nextLine();
+        
+        System.out.println("-> Ingrese el pais de residencia: ");
+        String residencia = sc.next();
+        System.out.println();
+        
+       
+        System.out.println("1) Encarcelado");
+        System.out.println("2) En libertad");
+        
+        boolean flag2 = false;
+        int index = 0;
+        
+        while(flag2){
+            try{
+                System.out.print("-> Ingrese el estado actual del criminal: ");
+                index = sc.nextInt();
+                
+                while(index < 1 || index > 2){
+                    System.out.print("-> Ingrese una opcion correcta!");
+                    index = sc.nextInt();
+                    System.out.println();
+                }
+                flag2 = true;
+            }catch(InputMismatchException e){
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                System.out.println();
+            }
+        }
+        sc.nextLine();
+        
+        
+        
+        boolean estaPreso = (index==1);
+        
+        System.out.println("1) Corpulento");
+        System.out.println("2) Cuerpo promedio");
+        System.out.println("3) Delgado");
+        
+        boolean flag3 = false;
+        int c = 0;
+        
+        while(flag3){
+            try{
+                System.out.print("-> Elija la descripcion fisica del criminal: ");
+                c = sc.nextInt();
+                System.out.println();
+                
+                while(c < 1 || c > 3){
+                    System.out.print("La opcion ingresada es incorrecta! Ingrese de nuevo: ");
+                    System.out.println();
+                }
+                flag3 = true;
+            }catch(InputMismatchException e){
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                System.out.println();
+            }
+        }
+        
+        String descripcion = "";
+        switch(c){
+            case 1:
+                descripcion = "Corpulento";
+                break;
+            case 2:
+                descripcion = "Cuerpo Promedio";
+                break;
+            case 3:
+                descripcion = "Delgado";
+                break;
+                                
+        }
+        
+        try {
+            criminales.add(new Criminal(nombre, edad, genero, residencia, estaPreso, descripcion));
+            System.out.println("Se agrego un nuevo criminal a la lista");
+            System.out.println();
+            contadorCriminales++;
+        } catch (Excepcion e) {
+            System.out.println(ANSI_RED + "No se ha podido crear el criminal." + ANSI_RESET);
+        }
     }
     
 }
