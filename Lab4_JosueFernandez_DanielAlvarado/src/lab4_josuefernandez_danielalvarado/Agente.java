@@ -5,7 +5,7 @@
  */
 package lab4_josuefernandez_danielalvarado;
 
-public class Agente extends Criminal{
+public abstract class Agente extends Criminal{
     
     private boolean delitoCometido;
     private double dineroRecibido;
@@ -43,6 +43,6 @@ public class Agente extends Criminal{
     }
 
     
-    
+    public abstract void CometerDelito();
     
 }

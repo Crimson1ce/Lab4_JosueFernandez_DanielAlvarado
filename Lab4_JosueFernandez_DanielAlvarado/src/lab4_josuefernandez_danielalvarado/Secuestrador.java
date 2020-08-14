@@ -43,5 +43,11 @@ public class Secuestrador extends Agente {
         return "Secuestrador{" + "nombreDelSecuestrado=" + nombreDelSecuestrado + ", cantidaDelRescate=" + cantidadDelRescate + '}';
     }
     
+    @Override
+    public void CometerDelito(){
+        
+        System.out.println(super.getNombreCriminal()+" cometio un secuestro a: "
+                +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate);
+    }
     
 }
