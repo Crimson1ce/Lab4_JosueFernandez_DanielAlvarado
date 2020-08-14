@@ -14,7 +14,7 @@ public class Terrorismo extends Grave{
         super();
     }
 
-    public Terrorismo(String nombreArtefacto, int numVictimas, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Terrorismo(String nombreArtefacto, int numVictimas, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(puntuacionGravedad, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombreArtefacto = nombreArtefacto;
         setNumVictimas(numVictimas); 
@@ -32,9 +32,12 @@ public class Terrorismo extends Grave{
         return numVictimas;
     }
 
-    public void setNumVictimas(int numVictimas) {
+    public void setNumVictimas(int numVictimas) throws Excepcion {
         if(numVictimas > 0){
             this.numVictimas = numVictimas;
+        }else{
+            System.out.println("El numero de victimas no es correcto");
+            throw new Excepcion();
         }
     }
 

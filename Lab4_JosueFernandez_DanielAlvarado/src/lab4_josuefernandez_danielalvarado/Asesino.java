@@ -14,7 +14,7 @@ public class Asesino extends Agente {
         super();
     }
 
-    public Asesino(String nombreDeVictima, String nombreDelArma, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) {
+    public Asesino(String nombreDeVictima, String nombreDelArma, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) throws Excepcion {
         super(delitoCometido, nombreCriminal, edadDelCriminal, genero, paisResidencia, descripcion);
         this.nombreDeVictima = nombreDeVictima;
         this.nombreDelArma = nombreDelArma;
@@ -45,9 +45,12 @@ public class Asesino extends Agente {
     
     @Override
     public void CometerDelito(){
-        
-        System.out.println(ANSI_PURPLE + super.getNombreCriminal()+" cometio un asesinato a: "
-        +nombreDeVictima+" con el arma: "+nombreDelArma + ANSI_RESET);
+        if(super.getDelitoCometido()){
+            System.out.println("El delito ya ha sido cometido!");
+        }else{
+            System.out.println(ANSI_PURPLE + super.getNombreCriminal()+" cometio un asesinato a: "
+            +nombreDeVictima+" con el arma: "+nombreDelArma + ANSI_RESET);
+        }
     }
     
 }

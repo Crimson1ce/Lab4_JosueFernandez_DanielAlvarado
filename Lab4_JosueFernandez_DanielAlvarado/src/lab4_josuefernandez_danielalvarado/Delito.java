@@ -18,7 +18,7 @@ public class Delito {
     public Delito() {
     }
 
-    public Delito(String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Delito(String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         this.descripcion = descripcion;
         this.nombreVictima = nombreVictima;
         this.esCulpable = esCulpable;
@@ -82,9 +82,12 @@ public class Delito {
         return numDelito;
     }
 
-    public void setNumDelito(int numDelito) {
+    public void setNumDelito(int numDelito) throws Excepcion {
         if(numDelito > 0){
             this.numDelito = numDelito;
+        }else{
+            System.out.println("El numero de delitos no es correcto");
+            throw new Excepcion();
         }
     }
 

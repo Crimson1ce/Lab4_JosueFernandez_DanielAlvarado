@@ -20,12 +20,12 @@ public abstract class Agente extends Criminal{
         super();
     }
 
-    public Agente(boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) {
+    public Agente(boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) throws Excepcion {
         super(nombreCriminal, edadDelCriminal, genero, paisResidencia, descripcion);
         this.delitoCometido = delitoCometido;
     }
 
-    public boolean isDelitoCometido() {
+    public boolean getDelitoCometido() {
         return delitoCometido;
     }
 

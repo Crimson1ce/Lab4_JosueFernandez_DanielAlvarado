@@ -14,7 +14,7 @@ public class Secuestrador extends Agente {
         super();
     }
 
-    public Secuestrador(String nombreDelSecuestrado, float cantidadDelRescate, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) {
+    public Secuestrador(String nombreDelSecuestrado, float cantidadDelRescate, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) throws Excepcion {
         super(delitoCometido, nombreCriminal, edadDelCriminal, genero, paisResidencia, descripcion);
         this.nombreDelSecuestrado = nombreDelSecuestrado;
         setCantidadDelRescate(cantidadDelRescate);
@@ -45,9 +45,12 @@ public class Secuestrador extends Agente {
     
     @Override
     public void CometerDelito(){
-        
-        System.out.println(ANSI_BLUE + super.getNombreCriminal()+" cometio un secuestro a: "
-                +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate + ANSI_RESET);
+        if(super.getDelitoCometido()){
+            System.out.println("El delito ya ha sido cometido");
+        }else{
+            System.out.println(ANSI_BLUE + super.getNombreCriminal()+" cometio un secuestro a: "
+                    +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate + ANSI_RESET);
+        }
     }
     
 }
