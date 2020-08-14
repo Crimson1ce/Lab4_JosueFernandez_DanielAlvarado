@@ -8,18 +8,18 @@ package lab4_josuefernandez_danielalvarado;
 public class Menor extends Delito{
     
     private String nombrePolicia;
-    private int IdPolicia;
+    private int idPolicia;
     private int numCelda;
 
     public Menor() {
         super();
     }
 
-    public Menor(String nombrePolicia, int IdPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Menor(String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
         super(descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombrePolicia = nombrePolicia;
-        this.IdPolicia = IdPolicia;
-        this.numCelda = numCelda;
+        setIdPolicia(idPolicia);
+        setNumCelda(numCelda);
     }
 
     public String getNombrePolicia() {
@@ -31,12 +31,12 @@ public class Menor extends Delito{
     }
 
     public int getIdPolicia() {
-        return IdPolicia;
+        return idPolicia;
     }
 
     public void setIdPolicia(int IdPolicia) {
         if(IdPolicia > 0){
-            this.IdPolicia = IdPolicia;
+            this.idPolicia = IdPolicia;
         }
     }
 
@@ -52,7 +52,7 @@ public class Menor extends Delito{
 
     @Override
     public String toString() {
-        return "Menor{" + "nombrePolicia=" + nombrePolicia + ", IdPolicia=" + IdPolicia + ", numCelda=" + numCelda + '}';
+        return "Menor{" + "nombrePolicia=" + nombrePolicia + ", IdPolicia=" + idPolicia + ", numCelda=" + numCelda + '}';
     }
     
     
