@@ -324,13 +324,26 @@ public class Main {
                 delitos.add(new Vanadalismo(edificacion, nPisos, nombreDueño, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
                 contadorDelitos++;
                 break;
+                
             case 2:
+                
+                System.out.print("Ingrese el objeto hurtado: ");
+                String objetoHurtado = sc.next();
+                
+                float valor = validarTipo("Ingrese el valor del objeto hurtado: ", 0.0f);
+                
+                delitos.add(new Hurto(objetoHurtado, valor, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
                 break;
             case 3:
+                
+                System.out.print("Ingrese el nombre del solicitante: ");
+                String nombreSolicitante = sc.nextLine();
+                
+                delitos.add(new Prostitucion(nombreSolicitante, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
                 break;
         }
-        
-        
         
     }
     
@@ -415,6 +428,20 @@ public class Main {
             try {
                 System.out.print(mensaje);
                 x = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                x = minimo - 1;
+            }   
+        }
+        return x;
+    }
+    
+    public static float validarTipo(String mensaje, float minimo){
+        float x = minimo-1;
+        while (x<minimo) {
+            try {
+                System.out.print(mensaje);
+                x = sc.nextFloat();
             } catch (Exception e) {
                 System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
                 x = minimo - 1;
