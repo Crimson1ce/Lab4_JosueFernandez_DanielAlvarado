@@ -15,7 +15,7 @@ public class Menor extends Delito{
         super();
     }
 
-    public Menor(String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Menor(String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombrePolicia = nombrePolicia;
         setIdPolicia(idPolicia);
@@ -34,9 +34,12 @@ public class Menor extends Delito{
         return idPolicia;
     }
 
-    public void setIdPolicia(int IdPolicia) {
+    public void setIdPolicia(int IdPolicia) throws Excepcion {
         if(IdPolicia > 0){
             this.idPolicia = IdPolicia;
+        }else{
+            System.out.println("El ID del policia no es correcto");
+            throw new Excepcion();
         }
     }
 

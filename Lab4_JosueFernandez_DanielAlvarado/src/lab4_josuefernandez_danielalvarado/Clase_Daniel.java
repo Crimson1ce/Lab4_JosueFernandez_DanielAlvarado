@@ -149,7 +149,7 @@ public class Clase_Daniel {
         
     }
     
-    public static void crearCriminal(){
+    public static void crearCriminal() throws Excepcion{
         System.out.println("-> Crea un criminal");
         System.out.println();
         

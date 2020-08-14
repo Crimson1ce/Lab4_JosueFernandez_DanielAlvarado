@@ -22,10 +22,14 @@ public class Grave extends Delito{
         return puntuacionGravedad;
     }
 
-    public void setPuntuacionGravedad(int puntuacionGravedad) {
+    public void setPuntuacionGravedad(int puntuacionGravedad) throws Excepcion {
         if(puntuacionGravedad > 0 && puntuacionGravedad < 6){
             this.puntuacionGravedad = puntuacionGravedad;
+        }else{
+            System.out.println("La puntuacion de gravedad no es correcta");
+            throw new Excepcion();
         }
+            
     }
 
     @Override

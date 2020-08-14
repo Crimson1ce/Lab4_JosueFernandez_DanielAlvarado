@@ -15,7 +15,7 @@ public class Vanadalismo extends Menor{
         super();
     }
 
-    public Vanadalismo(String edificacion, int numPisos, String nombreOwner, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Vanadalismo(String edificacion, int numPisos, String nombreOwner, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(nombrePolicia, idPolicia, numCelda, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.edificacion = edificacion;
         setNumPisos(numPisos);
@@ -34,9 +34,12 @@ public class Vanadalismo extends Menor{
         return numPisos;
     }
 
-    public void setNumPisos(int numPisos) {
+    public void setNumPisos(int numPisos) throws Excepcion {
         if(numPisos > 0){
             this.numPisos = numPisos;
+        }else{
+            System.out.println("El numero de pisos es incorrecto");
+            throw new Excepcion();
         }
     }
 

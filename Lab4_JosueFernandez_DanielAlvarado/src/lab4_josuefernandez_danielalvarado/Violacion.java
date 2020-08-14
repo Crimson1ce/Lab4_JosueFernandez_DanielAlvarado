@@ -22,9 +22,12 @@ public class Violacion extends Grave{
         return edadVictima;
     }
 
-    public void setEdadVictima(int edadVictima) {
+    public void setEdadVictima(int edadVictima) throws Excepcion {
         if(edadVictima > 0 && edadVictima < 130){
             this.edadVictima = edadVictima;
+        }else{
+            System.out.println("La edad de la victima es incorrecta");
+            throw new Excepcion();
         }
     }
 

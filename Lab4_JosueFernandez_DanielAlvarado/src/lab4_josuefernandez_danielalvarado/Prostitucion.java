@@ -13,7 +13,7 @@ public class Prostitucion extends Menor{
         super();
     }
 
-    public Prostitucion(String nombreSolicitante, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Prostitucion(String nombreSolicitante, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(nombrePolicia, idPolicia, numCelda, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombreSolicitante = nombreSolicitante;
     }

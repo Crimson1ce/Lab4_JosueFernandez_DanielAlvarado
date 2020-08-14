@@ -14,7 +14,7 @@ public class TraficoDrogas extends Grave{
         super();
     }
 
-    public TraficoDrogas(String nombreDroga, double cantidadIncautada, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public TraficoDrogas(String nombreDroga, double cantidadIncautada, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(puntuacionGravedad, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombreDroga = nombreDroga;
         setCantidadIncautada(cantidadIncautada);
@@ -32,9 +32,12 @@ public class TraficoDrogas extends Grave{
         return cantidadIncautada;
     }
 
-    public void setCantidadIncautada(double cantidadIncautada) {
+    public void setCantidadIncautada(double cantidadIncautada) throws Excepcion {
         if(cantidadIncautada > 0){
             this.cantidadIncautada = cantidadIncautada;
+        } else {
+            System.out.println("La cantidad incautada no es correcta");
+            throw new Excepcion();
         }
     }
 

@@ -25,7 +25,7 @@ public abstract class Agente extends Criminal{
         this.delitoCometido = delitoCometido;
     }
 
-    public boolean isDelitoCometido() {
+    public boolean getDelitoCometido() {
         return delitoCometido;
     }
 

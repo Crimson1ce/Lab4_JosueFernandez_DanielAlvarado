@@ -14,7 +14,7 @@ public class Secuestro extends Grave{
         super();
     }
 
-    public Secuestro(float tiempoRetenido, boolean devueltoVivo, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Secuestro(float tiempoRetenido, boolean devueltoVivo, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(puntuacionGravedad, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         setTiempoRetenido(tiempoRetenido);
         this.devueltoVivo = devueltoVivo;
@@ -24,9 +24,11 @@ public class Secuestro extends Grave{
         return tiempoRetenido;
     }
 
-    public void setTiempoRetenido(float tiempoRetenido) {
+    public void setTiempoRetenido(float tiempoRetenido) throws Excepcion {
         if(tiempoRetenido > 0){
             this.tiempoRetenido = tiempoRetenido;
+        }else{
+            throw new Excepcion();
         }
     }
 

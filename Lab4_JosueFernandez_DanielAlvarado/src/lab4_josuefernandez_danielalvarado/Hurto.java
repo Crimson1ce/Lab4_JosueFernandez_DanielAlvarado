@@ -14,7 +14,7 @@ public class Hurto extends Menor{
         super();
     }
 
-    public Hurto(String objetoHurtado, float valorObjeto, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Hurto(String objetoHurtado, float valorObjeto, String nombrePolicia, int idPolicia, int numCelda, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(nombrePolicia, idPolicia, numCelda, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.objetoHurtado = objetoHurtado;
         setValorObjeto(valorObjeto);
@@ -32,9 +32,11 @@ public class Hurto extends Menor{
         return valorObjeto;
     }
 
-    public void setValorObjeto(float valorObjeto) {
+    public void setValorObjeto(float valorObjeto) throws Excepcion {
         if(valorObjeto > 0){
             this.valorObjeto = valorObjeto;
+        }else{
+            throw new Excepcion();
         }
     }
 

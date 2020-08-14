@@ -15,7 +15,7 @@ public class Terrorista extends Agente{
         super();
     }
 
-    public Terrorista(String nombrePaisAtaque, String nombreCiudadAtaque, String metodoAtaque, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) {
+    public Terrorista(String nombrePaisAtaque, String nombreCiudadAtaque, String metodoAtaque, boolean delitoCometido, String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) throws Excepcion {
         super(delitoCometido, nombreCriminal, edadDelCriminal, genero, paisResidencia, descripcion);
         this.nombrePaisAtaque = nombrePaisAtaque;
         this.nombreCiudadAtaque = nombreCiudadAtaque;
@@ -55,9 +55,13 @@ public class Terrorista extends Agente{
     
     @Override
     public void CometerDelito(){
-        
-        System.out.println(ANSI_YELLOW + super.getNombreCriminal()+" hizo un ataque en: "
-        +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque + ANSI_RESET);
+        if(super.getDelitoCometido()){
+            System.out.println("El delito ya fue cometido!");
+        }else{
+            
+            System.out.println(ANSI_YELLOW + super.getNombreCriminal()+" hizo un ataque en: "
+            +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque + ANSI_RESET);
+        }
     }
     
 }
