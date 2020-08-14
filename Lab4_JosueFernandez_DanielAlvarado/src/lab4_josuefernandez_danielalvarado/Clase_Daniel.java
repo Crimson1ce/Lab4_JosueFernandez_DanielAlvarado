@@ -148,4 +148,124 @@ public class Clase_Daniel {
         
         
     }
+    
+    public static void crearCriminal(){
+        System.out.println("-> Crea un criminal");
+        System.out.println();
+        
+        System.out.println("-> Ingrese el nombre del criminal: ");
+        String nombre = sc.next();
+        System.out.println();
+        
+        boolean flag = false;
+        int edad = 0;
+        
+        while(flag){
+            try{
+                System.out.println("-> Ingrese la edad del criminal: ");
+                edad = sc.nextInt();
+                
+                while(edad < 0 || edad > 130){
+                    System.out.println("-> La edad ingresada no es valida!");
+                    edad = sc.nextInt();
+                }
+                flag = true;
+            }catch(InputMismatchException e){
+                System.out.println("-> El tipo de dato ingresado no es correcto!");
+                System.out.println();
+            }
+        }
+        
+        System.out.println("-> Ingrese el genero del criminal: ");
+        String genero = sc.next();
+        System.out.println();
+        
+        System.out.println("-> Ingrese el pais de residencia: ");
+        String residencia = sc.next();
+        System.out.println();
+        
+       
+        System.out.println("1) Encarcelado");
+        System.out.println("2) En libertad");
+        
+        boolean flag2 = false;
+        int index = 0;
+        
+        while(flag2){
+            try{
+                System.out.println("-> Ingrese el estado actual del criminal: ");
+                index = sc.nextInt();
+                
+                while(index < 1 || index > 2){
+                    System.out.println("-> Ingrese una opcion correcta!");
+                    index = sc.nextInt();
+                    System.out.println();
+                }
+                flag2 = true;
+            }catch(InputMismatchException e){
+                System.out.println("El tipo de dato ingresado no es correcto!");
+                System.out.println();
+            }
+        }
+        
+        boolean estaPreso = false;
+        switch(index){
+            
+            case 1:
+                estaPreso = true;
+                break;
+                
+            case 2:
+                estaPreso = false;
+                break;
+        }
+        
+        
+        System.out.println("1) Corpulento");
+        System.out.println("2) Cuerpo promedio");
+        System.out.println("3) Delgado");
+        
+        boolean flag3 = false;
+        int c = 0;
+        
+        while(flag3){
+            try{
+                System.out.println("-> Elija la descripcion fisica del criminal: ");
+                c = sc.nextInt();
+                System.out.println();
+                
+                while(c < 1 || c > 3){
+                    System.out.println("La opcion ingresada es incorrecta!");
+                    System.out.println();
+                }
+                flag3 = true;
+            }catch(InputMismatchException e){
+                System.out.println("El tipo de dato ingresado es incorrecto!");
+                System.out.println();
+            }
+        }
+        
+        String descripcion = "";
+        switch(c){
+            
+            case 1:
+                descripcion = "Corpulento";
+                break;
+                
+            case 2:
+                descripcion = "Cuerpo Promedio";
+                break;
+                
+            case 3:
+                descripcion = "Delgado";
+                break;
+                                
+        }
+        
+        criminales.add(new Criminal(nombre, edad, genero, residencia, estaPreso, descripcion));
+        
+        System.out.println("Se agrego un nuevo criminal a la lista");
+        System.out.println();
+    }
+    
 }
