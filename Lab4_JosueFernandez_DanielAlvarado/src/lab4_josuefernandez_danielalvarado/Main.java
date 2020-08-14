@@ -60,6 +60,7 @@ public class Main {
                     } catch (InputMismatchException e) {
                         System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
                     }
+                    sc.nextLine();
                     
                     if (tipoDelito==1) {
                         //Agregar delito menor
@@ -68,7 +69,6 @@ public class Main {
                         //Agregar delito mayor
                         crearDelito(2);
                     }
-                    sc.nextLine();
                     
                     break;
                 case 2:
@@ -211,22 +211,25 @@ public class Main {
         while(flag){
             try {
                 
-                for (int i = 0; i < contadorDelitos; i++) {
-                    
-                    if (i==0) {
-                        System.out.print("\nIngrese el número del delito: ");
-                         nDelito = sc.nextInt();
+                System.out.print("\nIngrese el número del delito: ");
+                nDelito = sc.nextInt();
                 
-                        while(nDelito<1){
-                            System.out.print("\tIngrese número válido: ");
-                            nDelito = sc.nextInt();
-                        }
-                    }
-                    
+                while(nDelito<1){
+                    System.out.print("\tIngrese número válido: ");
+                    nDelito = sc.nextInt();
+                }
+                
+                for (int i = 0; i < contadorDelitos; i++) {
+                
                     Delito d = delitos.get(i);
                     
                     if (nDelito==d.getNumDelito()) {
                         System.out.println(ANSI_RED + "El número de delito ingresado ya existe." + ANSI_RESET);
+                    } else if (nDelito<1){
+                        System.out.println("Número no válido.");
+                        flag = true;
+                        nDelito = 0;
+                        break;
                     }
                 }
                 flag = false;
@@ -293,14 +296,15 @@ public class Main {
         }
         
         int tipo = 0;
-        while(tipo<1 && tipo>3){
+        while(tipo<1 || tipo>3){
             try {
                 System.out.println("\n1. Vandalismo");
                 System.out.println("2. Hurto");
                 System.out.println("3. Prostitución");
-                System.out.print("Ingrese el tipo de delito deseado: ");
+                System.out.print("Ingrese el tipo de delito: ");
+                tipo = sc.nextInt();
                 
-                while(tipo<1 && tipo>3){
+                while(tipo<1 || tipo>3){
                     System.out.print("\tIngrese una opción válida: ");
                     tipo = sc.nextInt();
                 }
@@ -346,6 +350,121 @@ public class Main {
         }
         
     }
+    
+    public static void crearGrave(String descripcion, String nombreVictima, boolean culpable, String sentencia, String fecha, String pais, int numDelito){
+        
+        boolean flag = true;
+        int gravedad = 0;
+        while(flag){
+            try {
+                    
+                System.out.print("Ingrese la puntuación de gravedad: ");
+                gravedad = sc.nextInt();
+                
+                while(gravedad<1){
+                    System.out.print("\tIngrese puntuación válida (1-5): ");
+                    gravedad = sc.nextInt();
+                }
+                
+                flag = false;
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag = true;
+            }
+        }
+        
+        int tipo = 0;
+        while(tipo<1 || tipo>3){
+            try {
+                System.out.println("\n1. Terrorismo");
+                System.out.println("2. Asesinato");
+                System.out.println("3. Violación");
+                System.out.println("4. Secuestro");
+                System.out.println("5. Tráfico de Drogas");
+                System.out.print("Ingrese el tipo de delito: ");
+                tipo = sc.nextInt();
+                
+                while(tipo<1 || tipo>5){
+                    System.out.print("\tIngrese una opción válida: ");
+                    tipo = sc.nextInt();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                tipo=0;
+            }
+        }
+        sc.nextLine();
+        
+        switch(tipo){
+            case 1:
+                System.out.print("Ingrese el nombre del artefacto: ");
+                String artefacto = sc.nextLine();
+                
+                int nVictimas = validarTipo("Ingrese el numero de víctimas", 0);
+                
+                delitos.add(new Terrorismo(artefacto, nVictimas, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
+                break;
+                
+            case 2:
+                
+                System.out.print("Ingrese el nombre del arma: ");
+                String arma = sc.next();
+                
+                int nCuerpos = validarTipo("Ingrese el número de cuerpos: ", 1);
+                
+                delitos.add(new Asesinato(arma, nCuerpos, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
+                break;
+            case 3:
+                
+                int edadVictima = validarTipo("Ingrese la edad de la víctima: ", 0);
+                
+                delitos.add(new Violacion(edadVictima, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
+                break;
+                
+            case 4:
+                
+                int tiempoRetenido = validarTipo("Ingrese los días de tiempo retenido: ", 0);
+                
+                int vivo = 0;
+                while(vivo!=1 && vivo!=2){
+                    try {
+                        System.out.println("1. Vivo");
+                        System.out.println("2. Muerto");
+                        System.out.print("\n¿Cómo fue devuelta la persona? : ");
+                        vivo = sc.nextInt();
+
+                        while(vivo!=1 && vivo!=2){
+                            System.out.print("\tIngrese una opción válida: ");
+                            vivo = sc.nextInt();
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                        vivo=0;
+                    }
+                }
+
+                boolean devueltoVivo = (vivo==1);
+                
+                delitos.add(new Secuestro(tiempoRetenido, devueltoVivo, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
+                break;
+                
+            case 5:
+                
+                System.out.println("Ingrese el nombre de la droga: ");
+                String nombreDroga = sc.next();
+                
+                int cantidad = validarTipo("Ingrese la cantidad de droga (gramos): ", 1);
+                
+                delitos.add(new TraficoDrogas(nombreDroga, cantidad, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                contadorDelitos++;
+                break;
+        }
+    }
+    
     
     //Método para modificar ...
     public void modificarObjeto(){
