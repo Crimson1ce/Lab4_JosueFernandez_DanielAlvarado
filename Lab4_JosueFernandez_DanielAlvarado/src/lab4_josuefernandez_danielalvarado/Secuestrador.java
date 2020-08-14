@@ -46,8 +46,8 @@ public class Secuestrador extends Agente {
     @Override
     public void CometerDelito(){
         
-        System.out.println(super.getNombreCriminal()+" cometio un secuestro a: "
-                +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate);
+        System.out.println(ANSI_BLUE + super.getNombreCriminal()+" cometio un secuestro a: "
+                +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate + ANSI_RESET);
     }
     
 }

@@ -46,8 +46,8 @@ public class Asesino extends Agente {
     @Override
     public void CometerDelito(){
         
-        System.out.println(super.getNombreCriminal()+" cometio un asesinato a: "
-        +nombreDeVictima+" con el arma: "+nombreDelArma);
+        System.out.println(ANSI_PURPLE + super.getNombreCriminal()+" cometio un asesinato a: "
+        +nombreDeVictima+" con el arma: "+nombreDelArma + ANSI_RESET);
     }
     
 }

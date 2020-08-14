@@ -7,6 +7,12 @@ package lab4_josuefernandez_danielalvarado;
 
 public abstract class Agente extends Criminal{
     
+    //Para estilo
+    protected static final String ANSI_YELLOW = "\u001B[33m";
+    protected static final String ANSI_BLUE = "\u001B[34m";
+    protected static final String ANSI_PURPLE = "\u001B[35m";
+    protected static final String ANSI_RESET = "\u001B[0m";
+    
     private boolean delitoCometido;
     private double dineroRecibido;
 

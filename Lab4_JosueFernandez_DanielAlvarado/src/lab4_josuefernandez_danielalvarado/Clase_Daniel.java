@@ -8,6 +8,8 @@ package lab4_josuefernandez_danielalvarado;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import static lab4_josuefernandez_danielalvarado.Main.ANSI_RED;
+import static lab4_josuefernandez_danielalvarado.Main.ANSI_RESET;
 
 public class Clase_Daniel {
 
@@ -27,22 +29,23 @@ public class Clase_Daniel {
         }
         System.out.println();
 
-        boolean flag = false;
+        boolean flag = true;
         int indice = 0;
         while (flag) {
             try {
-                System.out.println("-> Ingrese el indice del delito a eliminar: ");
+                System.out.print("-> Ingrese el indice del delito a eliminar: ");
                 indice = sc.nextInt();
 
                 while (indice < 0 || indice > delitos.size() - 1) {
-                    System.out.println("-> Ingree un numero valido");
+                    System.out.print("-> Ingree un numero valido: ");
                     indice = sc.nextInt();
                     System.out.println();
                 }
-                flag = true;
+                flag = false;
                 
             } catch (InputMismatchException e) {
-                System.out.println("-> El tipo de dato ingresado no es correcto!");
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag=true;
                 System.out.println();
             }
         }
@@ -60,7 +63,7 @@ public class Clase_Daniel {
         System.out.println();
     }
 
-    public static void eliminarUnCriminal() {
+    public static void eliminarCriminal() {
         System.out.println("-> Eliminar un criminal en la lista");
         System.out.println();
         
@@ -85,7 +88,7 @@ public class Clase_Daniel {
                 flag = true;
                 
             } catch (InputMismatchException e) {
-                System.out.println("-> El tipo de dato ingresado no es correcto!");
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
                 System.out.println();
             }
         }

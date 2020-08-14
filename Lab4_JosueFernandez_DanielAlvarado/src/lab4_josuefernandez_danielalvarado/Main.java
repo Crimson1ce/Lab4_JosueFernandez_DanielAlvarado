@@ -1,6 +1,5 @@
 package lab4_josuefernandez_danielalvarado;
 
-import com.sun.java_cup.internal.runtime.virtual_parse_stack;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -15,13 +14,13 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     
     //Determina el número de la opción de salida
-    final static int salida = 13;
+    final static int salida = 16;
     
     //Lista con los objetos
     ////////////////////////////////////////////////////////////////////////////
     static ArrayList<Delito> delitos = new ArrayList();
-    //static ArrayList<Criminal> criminales = new ArrayList();
-    //static ArrayList<Agente> agentes = new ArrayList();
+    static ArrayList<Criminal> criminales = new ArrayList();
+    static ArrayList<Agente> agentes = new ArrayList();
     ////////////////////////////////////////////////////////////////////////////
     
     //contadro de los objetos del ArrayList por conveniencia
@@ -74,24 +73,63 @@ public class Main {
                 case 2:
                     break;
                 case 3:
+                    if (contadorDelitos==0) {
+                        System.out.println("No hay delitos que eliminar.");
+                    } else {
+                        eliminarDelito();
+                        contadorDelitos--;
+                    }
                     break;
                 case 4:
+                    if (contadorDelitos==0) {
+                        System.out.println("No hay delitos que listar.");
+                    } else {
+                        listarDelitos();
+                    }
                     break;
                 case 5:
                     break;
                 case 6:
                     break;
                 case 7:
+                    if (contadorCriminales==0) {
+                        System.out.println("No hay criminales que eliminar.");
+                    } else {
+                        eliminarCriminal();
+                        contadorCriminales--;
+                    }
                     break;
                 case 8:
+                    if (contadorCriminales==0) {
+                        System.out.println("No hay criminales que listar.");
+                    } else {
+                        listarCriminales();
+                    }
                     break;
                 case 9:
                     break;
                 case 10:
                     break;
                 case 11:
+                    if (contadorAgentes==0) {
+                        System.out.println("No hay agentes que eliminar.");
+                    } else {
+                        eliminarAgente();
+                        contadorAgentes--;
+                    }
                     break;
                 case 12:
+                    if (contadorAgentes==0) {
+                        System.out.println("No hay agentes que listar.");
+                    } else {
+                        listarAgentes();
+                    }
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
                     break;
                 default:
                     System.out.println("Opción no válida.");
@@ -110,15 +148,17 @@ public class Main {
         System.out.println(" 1. Crear Delito");
         System.out.println(" 2. Modificar Delito");
         System.out.println(" 3. Eliminar Delito");
-        System.out.println(" 4. Crear Criminal");
-        System.out.println(" 5. Modificar Criminal");
-        System.out.println(" 6. Eliminar Criminal");
-        System.out.println(" 7. Crear Agente");
-        System.out.println(" 8. Modificar Agente");
-        System.out.println(" 9. Eliminar Agente");
-        System.out.println("10. Asignar delito a criminal");
-        System.out.println("11. Contratar agente");
-        System.out.println("12. Cometer delito");
+        System.out.println(" 4. Listar Delitos");
+        System.out.println(" 5. Crear Criminal");
+        System.out.println(" 6. Modificar Criminal");
+        System.out.println(" 7. Eliminar Criminal");
+        System.out.println(" 8. Listar Criminales");
+        System.out.println(" 9. Crear Agente");
+        System.out.println("10. Modificar Agente");
+        System.out.println("11. Eliminar Agente");
+        System.out.println("12. Listar Agentes");
+        System.out.println("13. Asignar delito a criminal");
+        System.out.println("14. Contratar agente");
         System.out.println(salida + ". Salir");
         System.out.print("\nIngrese una opción: ");
     }
@@ -569,11 +609,167 @@ public class Main {
         return x;
     }
     
-    public static void validacionExcepcion(){
-        //?
+    public static void eliminarDelito() {
+        System.out.println("-> Eliminar un Delito ");
+        System.out.println();
+
+        listarDelitos();
+
+        boolean flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del delito a eliminar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > delitos.size() - 1) {
+                    System.out.print("-> Ingree un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag=true;
+                System.out.println();
+            }
+        }
+
+        delitos.remove(indice);
+
+        System.out.println("El delito se eliminado correctamente");
+        System.out.println();
+        
+        listarDelitos();
     }
     
-    public static void ordenarArreglo(){
+    public static void eliminarCriminal() {
+        System.out.println("-> Eliminar un criminal en la lista");
+        System.out.println();
+        
+        listarCriminales();
+
+        boolean flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del criminal a eliminar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > criminales.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag = true;
+                System.out.println();
+            }
+        }
+        
+        criminales.remove(indice);
+        
+        System.out.println("El criminal se ha eliminado exitosamente de la lista");
+        System.out.println();
+        
+        listarCriminales();
+    }
+    
+    public static void eliminarAgente(){
+        System.out.println("-> Eliminar un agente");
+        System.out.println();
+        
+        listarAgentes();
+        
+        boolean flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del agente a eliminar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > agentes.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                System.out.println();
+                flag = true;
+            }
+        }
+        
+        agentes.remove(indice);
+        
+        System.out.println("El agente se ha eliminado exitosamente de la lista");
+        System.out.println();
+        
+        listarAgentes();
+        
+    }
+    
+    public static void listarDelitos(){
+        System.out.println("-> Esta es la lista de delitos: ");
+        for (Delito d : delitos) {
+            System.out.println("\t" + delitos.indexOf(d) + ". " + d);
+        }
+        System.out.println();
+    }
+    
+    public static void listarCriminales(){
+        
+        System.out.println("-> Esta es la lista de los criminales: ");
+        for (Criminal c : criminales) {
+            System.out.println("\t" + criminales.indexOf(c) + ". " + c);
+        }
+        System.out.println();
+        
+    }
+    
+    public static void listarAgentes(){
+        
+        System.out.println("-> Esta es la lista de los agentes: ");
+        for (Agente a : agentes) {
+            System.out.println("\t" + agentes.indexOf(a)+". "+a);
+        }
+        System.out.println();
+        
+    }
+
+    public static void contratarAgente(){
+        listarAgentes();
+        
+        boolean flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del agente a contratar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > agentes.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                System.out.println();
+                flag = true;
+            }
+        }
+        
+        //Polimorfismo al delinquir
+        agentes.get(indice).CometerDelito();
+        
     }
     
 }

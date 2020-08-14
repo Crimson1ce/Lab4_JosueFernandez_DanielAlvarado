@@ -19,7 +19,7 @@ public class Criminal {
     public Criminal() {
     }
 
-    public Criminal(String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) {
+    public Criminal(String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, boolean estaEncarcelado, String descripcion) throws Excepcion {
         this.nombreCriminal = nombreCriminal;
         setEdadDelCriminal(edadDelCriminal);
         setGenero(genero);
@@ -28,7 +28,7 @@ public class Criminal {
         this.descripcion = descripcion;
     }
 
-    public Criminal(String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) {
+    public Criminal(String nombreCriminal, int edadDelCriminal, String genero, String paisResidencia, String descripcion) throws Excepcion {
         this.nombreCriminal = nombreCriminal;
         setEdadDelCriminal(edadDelCriminal);
         setGenero(genero);
@@ -50,9 +50,11 @@ public class Criminal {
         return edadDelCriminal;
     }
 
-    public void setEdadDelCriminal(int edadDelCriminal) {
+    public void setEdadDelCriminal(int edadDelCriminal) throws Excepcion {
         if(edadDelCriminal > 0 && edadDelCriminal < 130){
             this.edadDelCriminal = edadDelCriminal;
+        } else {
+            throw new Excepcion("Criminal", "Edad fuera del rango aceptable");
         }
     }
 

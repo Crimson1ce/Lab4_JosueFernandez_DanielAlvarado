@@ -56,8 +56,8 @@ public class Terrorista extends Agente{
     @Override
     public void CometerDelito(){
         
-        System.out.println(super.getNombreCriminal()+" hizo un ataque en: "
-        +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque);
+        System.out.println(ANSI_YELLOW + super.getNombreCriminal()+" hizo un ataque en: "
+        +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque + ANSI_RESET);
     }
     
 }
