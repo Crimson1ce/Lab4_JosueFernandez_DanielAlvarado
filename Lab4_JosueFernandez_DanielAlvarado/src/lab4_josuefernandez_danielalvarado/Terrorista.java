@@ -53,6 +53,11 @@ public class Terrorista extends Agente{
         return "Terrorista{" + "nombrePaisAtaque=" + nombrePaisAtaque + ", nombreCiudadAtaque=" + nombreCiudadAtaque + ", metodoAtaque=" + metodoAtaque + '}';
     }
     
-    
+    @Override
+    public void CometerDelito(){
+        
+        System.out.println(super.getNombreCriminal()+" hizo un ataque en: "
+        +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque);
+    }
     
 }

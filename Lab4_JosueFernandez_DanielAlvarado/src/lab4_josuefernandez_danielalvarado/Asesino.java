@@ -43,5 +43,11 @@ public class Asesino extends Agente {
         return "Asesino{" + "nombreDeVictima=" + nombreDeVictima + ", nombreDelArma=" + nombreDelArma + '}';
     }
     
+    @Override
+    public void CometerDelito(){
+        
+        System.out.println(super.getNombreCriminal()+" cometio un asesinato a: "
+        +nombreDeVictima+" con el arma: "+nombreDelArma);
+    }
     
 }
