@@ -45,10 +45,6 @@ public class Main {
             
             switch(opcion){
                 case 1:
-                    if (contadorCriminales==0) {
-                        System.out.println("No hay criminales que cometan delitos.");
-                        break;
-                    }
                     
                     try {
                         System.out.println("OPCIONES\n");
@@ -511,29 +507,6 @@ public class Main {
         }
         
         listarCriminales();
-
-        flag = true;
-        int indice = 0;
-        while (flag) {
-            try {
-                System.out.print("-> Ingrese el indice del criminal que cometió el crimen: ");
-                indice = sc.nextInt();
-
-                while (indice < 0 || indice > criminales.size() - 1) {
-                    System.out.print("-> Ingrese un numero valido: ");
-                    indice = sc.nextInt();
-                    System.out.println();
-                }
-                flag = false;
-                
-            } catch (InputMismatchException e) {
-                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
-                flag = true;
-                System.out.println();
-            }
-        }
-        
-        criminales.get(indice).getDelitos().add(delitos.get(delitos.size()-1));
         
     }
     
@@ -656,7 +629,7 @@ public class Main {
                 indice = sc.nextInt();
 
                 while (indice < 0 || indice > delitos.size() - 1) {
-                    System.out.print("-> Ingree un numero valido: ");
+                    System.out.print("-> Ingrese un numero valido: ");
                     indice = sc.nextInt();
                     System.out.println();
                 }
@@ -935,6 +908,63 @@ public class Main {
         } catch (Excepcion e) {
             System.out.println(ANSI_RED + "No se ha podido crear el criminal." + ANSI_RESET);
         }
+    }
+    
+    public static void asignarDelito(){
+        
+        System.out.println("-> Asignar un Delito ");
+        System.out.println();
+
+        listarDelitos();
+
+        boolean flag = true;
+        int indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del delito a asignar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > delitos.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag=true;
+                System.out.println();
+            }
+        }
+        
+        
+        
+        
+        
+        
+        flag = true;
+        indice = 0;
+        while (flag) {
+            try {
+                System.out.print("-> Ingrese el indice del criminal que cometió el crimen: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > criminales.size() - 1) {
+                    System.out.print("-> Ingrese un numero valido: ");
+                    indice = sc.nextInt();
+                    System.out.println();
+                }
+                flag = false;
+                
+            } catch (InputMismatchException e) {
+                System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
+                flag = true;
+                System.out.println();
+            }
+        }
+        
+        criminales.get(indice).getDelitos().add(delitos.get(delitos.size()-1));
     }
     
 }
