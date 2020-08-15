@@ -45,7 +45,7 @@ public abstract class Agente extends Criminal{
         
     @Override
     public String toString() {
-        return "Agente: " + "delitoCometido=" + delitoCometido + '}';
+        return "Agente: \n" + "delitoCometido = " + delitoCometido;
     }
 
     

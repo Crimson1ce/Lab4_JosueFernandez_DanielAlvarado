@@ -34,7 +34,7 @@ public class Grave extends Delito{
 
     @Override
     public String toString() {
-        return "Grave{" + "puntuacionGravedad=" + puntuacionGravedad + '}';
+        return "Grave \n: " + "puntuacionGravedad = " + puntuacionGravedad;
     }
     
     

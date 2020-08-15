@@ -43,7 +43,8 @@ public class Terrorismo extends Grave{
 
     @Override
     public String toString() {
-        return "Terrorismo{" + "nombreArtefacto=" + nombreArtefacto + ", numVictimas=" + numVictimas + '}';
+        return "Terrorismo: \n" + "nombreArtefacto = " + nombreArtefacto + 
+                "\n numVictimas = " + numVictimas;
     }
     
     

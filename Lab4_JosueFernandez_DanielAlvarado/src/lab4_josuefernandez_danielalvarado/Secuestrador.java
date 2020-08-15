@@ -40,7 +40,8 @@ public class Secuestrador extends Agente {
 
     @Override
     public String toString() {
-        return "Secuestrador{" + "nombreDelSecuestrado=" + nombreDelSecuestrado + ", cantidaDelRescate=" + cantidadDelRescate + '}';
+        return "Secuestrador: \n" + "nombreDelSecuestrado = " + nombreDelSecuestrado 
+                + "\n cantidaDelRescate = " + cantidadDelRescate;
     }
     
     @Override

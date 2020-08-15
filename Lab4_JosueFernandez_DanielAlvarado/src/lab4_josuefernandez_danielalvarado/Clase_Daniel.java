@@ -264,7 +264,7 @@ public class Clase_Daniel {
         System.out.println();
     }
 
-    public void modificarDelito() {
+    public void modificarDelito() throws Excepcion {
         System.out.println("Modificar un delito");
         System.out.println();
 
@@ -310,55 +310,201 @@ public class Clase_Daniel {
                 System.out.println("-> Que elemento desea modificar");
                 index = sc.nextInt();
                 System.out.println();
-                
+
                 flag2 = true;
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("El tipo de dato ingresado no es correcto!");
             }
         }
-        
-        switch(index){
-            
+
+        switch (index) {
+
             case 1:
                 System.out.println("Modificar descripcion");
                 System.out.println();
-                
+
                 System.out.println("Ingrese una nueva descripcion del delito: ");
                 sc.nextLine();
                 String descripcion = sc.nextLine();
                 System.out.println();
-                
+
                 delitos.get(indice).setDescripcion(descripcion);
-                
+
                 System.out.println("La descripcion del delito se modifico correctamente");
                 System.out.println();
                 break;
-                
+
             case 2:
-                
+                System.out.println("Modificar nombre de la victima");
+                System.out.println();
+
+                System.out.println("Ingrese el nuevo nombre de la victima: ");
+                String nombre = sc.next();
+                System.out.println();
+
+                delitos.get(indice).setNombreVictima(nombre);
+
+                System.out.println("El nombre de la victima se actualizo correctamente");
+                System.out.println();
                 break;
-                
+
             case 3:
-                
+                System.out.println("Es culpable?");
+                System.out.println();
+
+                System.out.println("1) Culpable");
+                System.out.println("2) Inocente");
+                System.out.println();
+
+                boolean flag3 = false;
+                int c = 0;
+                while (flag3) {
+                    try {
+                        System.out.println("Ingrese su opcion: ");
+                        c = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Los datos ingresados no son correctos");
+                    }
+                }
+
+                switch (c) {
+
+                    case 1:
+                        delitos.get(indice).setEsCulpable(true);
+                        break;
+
+                    case 2:
+                        delitos.get(indice).setEsCulpable(false);
+                        delitos.get(indice).setSentencia("Ninguna");
+                        break;
+                }
+
+                System.out.println("Se modifico la culpabilidad");
                 break;
-                
+
             case 4:
-                
+                System.out.println("Sentencia");
+                System.out.println();
+
+                if (delitos.get(indice).getEsCulpable() == false) {
+                    System.out.println("El delito no tiene culpables!");
+                    System.out.println();
+                } else {
+
+                    System.out.println("Years");
+                    System.out.println("Pena de muerte");
+
+                    boolean flag4 = false;
+                    int b = 0;
+
+                    while (flag4) {
+                        try {
+                            System.out.println("Ingrese su opcion: ");
+                            b = sc.nextInt();
+                            flag4 = true;
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("El tipo de datos es incorrecto");
+                            System.out.println();
+                        }
+                    }
+
+                    switch (b) {
+
+                        case 1:
+
+                            boolean flag5 = false;
+                            int years = 0;
+                            while (flag5) {
+                                try {
+                                    System.out.println("Ingrese el numero de years: ");
+                                    years = sc.nextInt();
+                                    System.out.println();
+                                } catch (InputMismatchException e) {
+                                    System.out.println("El tipo de datos no es correcto");
+                                    System.out.println();
+                                }
+                            }
+
+                            delitos.get(indice).setSentencia(years + " year(s) en carcel");
+                            break;
+
+                        case 2:
+                            delitos.get(indice).setSentencia("Pena de muerte");
+                            break;
+
+                        default:
+                            System.out.println("Opcion incorrecta!");
+                            System.out.println();
+                    }
+
+                    System.out.println("Se modifico la sentencia correctamente");
+                    System.out.println();
+                }
                 break;
-                
+
             case 5:
-                
+                System.out.println("Fecha de delito");
+                System.out.println();
+
+                System.out.println("Ingrese la nueva fecha de delito: ");
+                sc.nextLine();
+                String fecha = sc.nextLine();
+                System.out.println();
+
+                delitos.get(indice).setFechaDelDelito(fecha);
+
+                System.out.println("Se modifico la fecha exitosamente");
+                System.out.println();
+
                 break;
-                
+
             case 6:
-                
+                System.out.println("Pais");
+                System.out.println();
+
+                System.out.println("Ingrese el pais donde se cometio el delito: ");
+                String pais = sc.next();
+                System.out.println();
+
+                delitos.get(indice).setPaisDelDelito(pais);
+
+                System.out.println("Se modifico el pais de delito");
+                System.out.println();
                 break;
-                
+
             case 7:
+                System.out.println("Numero de delito");
+                System.out.println();
                 
+                boolean flag6 = false;
+                int num = 0;
+                
+                while(flag6){
+                    try{
+                        System.out.println("Ingrese el nuevo numero de delito");
+                        num = sc.nextInt();
+                        System.out.println();
+                        
+                        while(num < 1){
+                            System.out.println("El numero ingresado no es correcto");
+                            System.out.println();
+                        }
+                        flag6 = true;
+                    }catch(InputMismatchException e){
+                        System.out.println("El tipo de dato ingresado no es correcto");
+                        System.out.println();
+                    }
+                }
+                
+                delitos.get(indice).setNumDelito(num);
+                
+                System.out.println("Se modifico el numero delito correctamente ");
+                System.out.println();
                 break;
-                
-            default: System.out.println("La opcion ingresada no es valida!");
+
+            default:
+                System.out.println("La opcion ingresada no es valida!");
                 System.out.println();
         }
 

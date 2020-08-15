@@ -42,7 +42,8 @@ public class Hurto extends Menor{
 
     @Override
     public String toString() {
-        return "Hurto{" + "objetoHurtado=" + objetoHurtado + ", valorObjeto=" + valorObjeto + '}';
+        return "Hurto: \n" + "objetoHurtado = " + objetoHurtado + 
+                "\n valorObjeto = " + valorObjeto;
     }
     
     

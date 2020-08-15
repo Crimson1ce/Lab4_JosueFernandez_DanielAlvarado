@@ -46,7 +46,8 @@ public class Asesinato extends Grave {
 
     @Override
     public String toString() {
-        return "Asesinato{" + "nombreArma=" + nombreArma + ", numCuerpos=" + numCuerpos + '}';
+        return "Asesinato: \n" + "nombreArma = " + nombreArma + 
+                "\n numCuerpos = " + numCuerpos;
     }
     
     

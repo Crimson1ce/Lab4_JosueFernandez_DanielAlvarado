@@ -28,7 +28,7 @@ public class Prostitucion extends Menor{
 
     @Override
     public String toString() {
-        return "Prostitucion{" + "nombreSolicitante=" + nombreSolicitante + '}';
+        return "Prostitucion: \n" + "nombreSolicitante = " + nombreSolicitante;
     }
     
     

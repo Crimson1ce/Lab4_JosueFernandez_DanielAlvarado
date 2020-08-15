@@ -33,7 +33,7 @@ public class Violacion extends Grave{
 
     @Override
     public String toString() {
-        return "Violacion{" + "edadVictima=" + edadVictima + '}';
+        return "Violacion: \n" + "edadVictima = " + edadVictima;
     }
     
     

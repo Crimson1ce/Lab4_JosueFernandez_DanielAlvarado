@@ -42,7 +42,8 @@ public class Secuestro extends Grave{
 
     @Override
     public String toString() {
-        return "Secuestro{" + "tiempoRetenido=" + tiempoRetenido + ", devueltoVivo=" + devueltoVivo + '}';
+        return "Secuestro: \n" + "tiempoRetenido = " + tiempoRetenido + 
+                "\n devueltoVivo = " + devueltoVivo;
     }
     
     

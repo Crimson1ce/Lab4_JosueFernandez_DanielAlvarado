@@ -50,7 +50,9 @@ public class Terrorista extends Agente{
 
     @Override
     public String toString() {
-        return "Terrorista{" + "nombrePaisAtaque=" + nombrePaisAtaque + ", nombreCiudadAtaque=" + nombreCiudadAtaque + ", metodoAtaque=" + metodoAtaque + '}';
+        return "Terrorista: \n" + "nombrePaisAtaque = " + nombrePaisAtaque + 
+                "\n nombreCiudadAtaque = " + nombreCiudadAtaque + 
+                "\n metodoAtaque=" + metodoAtaque;
     }
     
     @Override

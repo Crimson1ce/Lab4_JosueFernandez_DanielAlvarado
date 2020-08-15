@@ -55,7 +55,9 @@ public class Menor extends Delito{
 
     @Override
     public String toString() {
-        return "Menor{" + "nombrePolicia=" + nombrePolicia + ", IdPolicia=" + idPolicia + ", numCelda=" + numCelda + '}';
+        return "Menor: " + "nombrePolicia = " + nombrePolicia + 
+                "\n IdPolicia = " + idPolicia + 
+                "\n numCelda = " + numCelda;
     }
     
     

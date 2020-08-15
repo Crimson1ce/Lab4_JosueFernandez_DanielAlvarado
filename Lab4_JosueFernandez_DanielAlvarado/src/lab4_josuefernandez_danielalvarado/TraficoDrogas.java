@@ -43,7 +43,8 @@ public class TraficoDrogas extends Grave{
 
     @Override
     public String toString() {
-        return "TraficoDrogas{" + "nombreDroga=" + nombreDroga + ", cantidadIncautada=" + cantidadIncautada + '}';
+        return "TraficoDrogas: \n" + "nombreDroga = " + nombreDroga + 
+                "\n cantidadIncautada = " + cantidadIncautada;
     }
     
     

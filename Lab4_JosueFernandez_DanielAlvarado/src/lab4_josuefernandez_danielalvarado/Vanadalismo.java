@@ -53,7 +53,9 @@ public class Vanadalismo extends Menor{
 
     @Override
     public String toString() {
-        return "Vanadalismo{" + "edificacion=" + edificacion + ", numPisos=" + numPisos + ", nombreOwner=" + nombreOwner + '}';
+        return "Vanadalismo: \n" + "edificacion = " + edificacion + 
+                "\n numPisos = " + numPisos + 
+                "\n nombreOwner = " + nombreOwner;
     }
     
     
