@@ -365,8 +365,15 @@ public class Main {
                 
                 int nPisos = validarTipo("Ingrese el numero de pisos", 1);
                 
-                delitos.add(new Vanadalismo(edificacion, nPisos, nombreDueño, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Vanadalismo(edificacion, nPisos, nombreDueño, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
                 
             case 2:
@@ -376,16 +383,30 @@ public class Main {
                 
                 float valor = validarTipo("Ingrese el valor del objeto hurtado: ", 0.0f);
                 
-                delitos.add(new Hurto(objetoHurtado, valor, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Hurto(objetoHurtado, valor, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
             case 3:
                 
                 System.out.print("Ingrese el nombre del solicitante: ");
                 String nombreSolicitante = sc.nextLine();
                 
-                delitos.add(new Prostitucion(nombreSolicitante, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Prostitucion(nombreSolicitante, nombrePolicia, id, celda, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
         }
         
@@ -444,8 +465,15 @@ public class Main {
                 
                 int nVictimas = validarTipo("Ingrese el numero de víctimas", 0);
                 
-                delitos.add(new Terrorismo(artefacto, nVictimas, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Terrorismo(artefacto, nVictimas, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
                 
             case 2:
@@ -455,15 +483,29 @@ public class Main {
                 
                 int nCuerpos = validarTipo("Ingrese el número de cuerpos: ", 1);
                 
-                delitos.add(new Asesinato(arma, nCuerpos, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Asesinato(arma, nCuerpos, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
             case 3:
                 
                 int edadVictima = validarTipo("Ingrese la edad de la víctima: ", 0);
                 
-                delitos.add(new Violacion(edadVictima, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Violacion(edadVictima, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
                 
             case 4:
@@ -490,8 +532,14 @@ public class Main {
 
                 boolean devueltoVivo = (vivo==1);
                 
-                delitos.add(new Secuestro(tiempoRetenido, devueltoVivo, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new Secuestro(tiempoRetenido, devueltoVivo, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
                 break;
                 
             case 5:
@@ -501,8 +549,15 @@ public class Main {
                 
                 int cantidad = validarTipo("Ingrese la cantidad de droga (gramos): ", 1);
                 
-                delitos.add(new TraficoDrogas(nombreDroga, cantidad, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
-                contadorDelitos++;
+                try {
+                    delitos.add(new TraficoDrogas(nombreDroga, cantidad, gravedad, descripcion, nombreVictima, culpable, sentencia, fecha, pais, numDelito));
+                    contadorDelitos++;
+                    System.out.println("Se agrego un nuevo delito a la lista");
+                    System.out.println();
+                } catch (Excepcion e) {
+                    System.out.println(ANSI_RED + "No se ha podido crear el delito." + ANSI_RESET);
+                }
+                
                 break;
         }
         
@@ -944,15 +999,15 @@ public class Main {
         
         
         flag = true;
-        indice = 0;
+        int index = 0;
         while (flag) {
             try {
                 System.out.print("-> Ingrese el indice del criminal que cometió el crimen: ");
-                indice = sc.nextInt();
+                index = sc.nextInt();
 
-                while (indice < 0 || indice > criminales.size() - 1) {
+                while (index < 0 || index > criminales.size() - 1) {
                     System.out.print("-> Ingrese un numero valido: ");
-                    indice = sc.nextInt();
+                    index = sc.nextInt();
                     System.out.println();
                 }
                 flag = false;
@@ -964,7 +1019,7 @@ public class Main {
             }
         }
         
-        criminales.get(indice).getDelitos().add(delitos.get(delitos.size()-1));
+        criminales.get(index).getDelitos().add(delitos.get(indice));
     }
     
 }

@@ -13,9 +13,9 @@ public class Violacion extends Grave{
         this.edadVictima = edadVictima;
     }
 
-    public Violacion(int edadVictima, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Violacion(int edadVictima, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(puntuacionGravedad, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
-        this.edadVictima = edadVictima;
+        setEdadVictima(edadVictima);
     }
 
     public int getEdadVictima() {

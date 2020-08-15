@@ -18,10 +18,10 @@ public class Asesinato extends Grave {
         super();
     }
 
-    public Asesinato(String nombreArma, int numCuerpos, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) {
+    public Asesinato(String nombreArma, int numCuerpos, int puntuacionGravedad, String descripcion, String nombreVictima, boolean esCulpable, String sentencia, String fechaDelDelito, String paisDelDelito, int numDelito) throws Excepcion {
         super(puntuacionGravedad, descripcion, nombreVictima, esCulpable, sentencia, fechaDelDelito, paisDelDelito, numDelito);
         this.nombreArma = nombreArma;
-        this.numCuerpos = numCuerpos;
+        setNumCuerpos(numCuerpos);
     }
 
     public String getNombreArma() {
@@ -36,9 +36,11 @@ public class Asesinato extends Grave {
         return numCuerpos;
     }
 
-    public void setNumCuerpos(int numCuerpos) {
+    public void setNumCuerpos(int numCuerpos) throws Excepcion {
         if(numCuerpos > 0){
             this.numCuerpos = numCuerpos;
+        } else {
+            throw new Excepcion("Asesinato", "La cantidad de cuerpos no puede ser negativa.");
         }
     }
 
