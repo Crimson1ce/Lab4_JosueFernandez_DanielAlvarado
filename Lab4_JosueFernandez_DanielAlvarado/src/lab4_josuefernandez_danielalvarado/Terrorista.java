@@ -61,6 +61,7 @@ public class Terrorista extends Agente{
             
             System.out.println(ANSI_YELLOW + super.getNombreCriminal()+" hizo un ataque en: "
             +nombreCiudadAtaque+" en el pais: "+nombrePaisAtaque + ANSI_RESET);
+            super.setDelitoCometido(true);
         }
     }
     

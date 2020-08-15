@@ -50,6 +50,7 @@ public class Secuestrador extends Agente {
         }else{
             System.out.println(ANSI_BLUE + super.getNombreCriminal()+" cometio un secuestro a: "
                     +nombreDelSecuestrado+" y pide una cantidad de: "+cantidadDelRescate + ANSI_RESET);
+            super.setDelitoCometido(true);
         }
     }
     

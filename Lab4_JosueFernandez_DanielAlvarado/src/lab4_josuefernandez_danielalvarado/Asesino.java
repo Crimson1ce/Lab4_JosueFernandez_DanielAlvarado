@@ -50,6 +50,7 @@ public class Asesino extends Agente {
         }else{
             System.out.println(ANSI_PURPLE + super.getNombreCriminal()+" cometio un asesinato a: "
             +nombreDeVictima+" con el arma: "+nombreDelArma + ANSI_RESET);
+            super.setDelitoCometido(true);
         }
     }
     

@@ -42,10 +42,10 @@ public class Clase_Daniel {
                     System.out.println();
                 }
                 flag = false;
-                
+
             } catch (InputMismatchException e) {
                 System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
-                flag=true;
+                flag = true;
                 System.out.println();
             }
         }
@@ -54,7 +54,7 @@ public class Clase_Daniel {
 
         System.out.println("El delito se eliminado correctamente");
         System.out.println();
-        
+
         System.out.println("-> Esta es la lista de delitos");
         for (Delito d : delitos) {
             System.out.println(delitos.indexOf(d) + ". " + d);
@@ -66,7 +66,7 @@ public class Clase_Daniel {
     public static void eliminarCriminal() {
         System.out.println("-> Eliminar un criminal en la lista");
         System.out.println();
-        
+
         System.out.println("-> Esta es la lista de los criminales");
         for (Criminal c : criminales) {
             System.out.println(criminales.indexOf(c) + ". " + c);
@@ -86,35 +86,35 @@ public class Clase_Daniel {
                     System.out.println();
                 }
                 flag = true;
-                
+
             } catch (InputMismatchException e) {
                 System.out.println(ANSI_RED + "Ha ocurrido un error en el ingreso." + ANSI_RESET);
                 System.out.println();
             }
         }
-        
+
         criminales.remove(indice);
-        
+
         System.out.println("El criminal se ha eliminado exitosamente de la lista");
         System.out.println();
-        
+
         System.out.println("-> Esta es la lista de los criminales");
         for (Criminal c : criminales) {
             System.out.println(criminales.indexOf(c) + ". " + c);
         }
         System.out.println();
     }
-    
-    public static void eliminarUnAgente(){
+
+    public static void eliminarUnAgente() {
         System.out.println("-> Eliminar un agente");
         System.out.println();
-        
+
         System.out.println("-> Esta es la lista de los agentes");
         for (Agente a : agentes) {
-            System.out.println(agentes.indexOf(a)+". "+a);
+            System.out.println(agentes.indexOf(a) + ". " + a);
         }
         System.out.println();
-        
+
         boolean flag = false;
         int indice = 0;
         while (flag) {
@@ -128,144 +128,240 @@ public class Clase_Daniel {
                     System.out.println();
                 }
                 flag = true;
-                
+
             } catch (InputMismatchException e) {
                 System.out.println("-> El tipo de dato ingresado no es correcto!");
                 System.out.println();
             }
         }
-        
+
         agentes.remove(indice);
-        
+
         System.out.println("El agente se ha eliminado exitosamente de la lista");
         System.out.println();
-        
-         System.out.println("-> Esta es la lista de los agentes");
+
+        System.out.println("-> Esta es la lista de los agentes");
         for (Agente a : agentes) {
-            System.out.println(agentes.indexOf(a)+". "+a);
+            System.out.println(agentes.indexOf(a) + ". " + a);
         }
         System.out.println();
-        
-        
+
     }
-    
-    public static void crearCriminal() throws Excepcion{
+
+    public static void crearCriminal() throws Excepcion {
         System.out.println("-> Crea un criminal");
         System.out.println();
-        
+
         System.out.println("-> Ingrese el nombre del criminal: ");
         String nombre = sc.next();
         System.out.println();
-        
+
         boolean flag = false;
         int edad = 0;
-        
-        while(flag){
-            try{
+
+        while (flag) {
+            try {
                 System.out.println("-> Ingrese la edad del criminal: ");
                 edad = sc.nextInt();
-                
-                while(edad < 0 || edad > 130){
+
+                while (edad < 0 || edad > 130) {
                     System.out.println("-> La edad ingresada no es valida!");
                     edad = sc.nextInt();
                 }
                 flag = true;
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("-> El tipo de dato ingresado no es correcto!");
                 System.out.println();
             }
         }
-        
+
         System.out.println("-> Ingrese el genero del criminal: ");
         String genero = sc.next();
         System.out.println();
-        
+
         System.out.println("-> Ingrese el pais de residencia: ");
         String residencia = sc.next();
         System.out.println();
-        
-       
+
         System.out.println("1) Encarcelado");
         System.out.println("2) En libertad");
-        
+
         boolean flag2 = false;
         int index = 0;
-        
-        while(flag2){
-            try{
+
+        while (flag2) {
+            try {
                 System.out.println("-> Ingrese el estado actual del criminal: ");
                 index = sc.nextInt();
-                
-                while(index < 1 || index > 2){
+
+                while (index < 1 || index > 2) {
                     System.out.println("-> Ingrese una opcion correcta!");
                     index = sc.nextInt();
                     System.out.println();
                 }
                 flag2 = true;
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("El tipo de dato ingresado no es correcto!");
                 System.out.println();
             }
         }
-        
+
         boolean estaPreso = false;
-        switch(index){
-            
+        switch (index) {
+
             case 1:
                 estaPreso = true;
                 break;
-                
+
             case 2:
                 estaPreso = false;
                 break;
         }
-        
-        
+
         System.out.println("1) Corpulento");
         System.out.println("2) Cuerpo promedio");
         System.out.println("3) Delgado");
-        
+
         boolean flag3 = false;
         int c = 0;
-        
-        while(flag3){
-            try{
+
+        while (flag3) {
+            try {
                 System.out.println("-> Elija la descripcion fisica del criminal: ");
                 c = sc.nextInt();
                 System.out.println();
-                
-                while(c < 1 || c > 3){
+
+                while (c < 1 || c > 3) {
                     System.out.println("La opcion ingresada es incorrecta!");
                     System.out.println();
                 }
                 flag3 = true;
-            }catch(InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("El tipo de dato ingresado es incorrecto!");
                 System.out.println();
             }
         }
-        
+
         String descripcion = "";
-        switch(c){
-            
+        switch (c) {
+
             case 1:
                 descripcion = "Corpulento";
                 break;
-                
+
             case 2:
                 descripcion = "Cuerpo Promedio";
                 break;
-                
+
             case 3:
                 descripcion = "Delgado";
                 break;
-                                
+
         }
-        
+
         //criminales.add(new Criminal(nombre, edad, genero, residencia, estaPreso, descripcion));
-        
         System.out.println("Se agrego un nuevo criminal a la lista");
         System.out.println();
     }
-    
+
+    public void modificarDelito() {
+        System.out.println("Modificar un delito");
+        System.out.println();
+
+        System.out.println("-> Esta es la lista de delitos: ");
+        for (Delito d : delitos) {
+            System.out.println(delitos.indexOf(d) + ". " + d);
+        }
+        System.out.println();
+
+        boolean flag = false;
+        int indice = 0;
+
+        while (flag) {
+            try {
+                System.out.println("-> Ingrese el indice del delito a modificar: ");
+                indice = sc.nextInt();
+
+                while (indice < 0 || indice > delitos.size() - 1) {
+                    System.out.println("El indice es incorrecto!");
+                    indice = sc.nextInt();
+                }
+                flag = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("El tipo de dato ingresado no es correcto");
+                System.out.println();
+            }
+        }
+
+        System.out.println("1) Descripcion");
+        System.out.println("2) Nombre de la victima");
+        System.out.println("3) Es culpable");
+        System.out.println("4) Sentencia");
+        System.out.println("5) Fecha de delito");
+        System.out.println("6) Pais del delito");
+        System.out.println("7) Numero del delito");
+
+        boolean flag2 = false;
+        int index = 0;
+
+        while (flag2) {
+            try {
+                System.out.println("-> Que elemento desea modificar");
+                index = sc.nextInt();
+                System.out.println();
+                
+                flag2 = true;
+            }catch(InputMismatchException e){
+                System.out.println("El tipo de dato ingresado no es correcto!");
+            }
+        }
+        
+        switch(index){
+            
+            case 1:
+                System.out.println("Modificar descripcion");
+                System.out.println();
+                
+                System.out.println("Ingrese una nueva descripcion del delito: ");
+                sc.nextLine();
+                String descripcion = sc.nextLine();
+                System.out.println();
+                
+                delitos.get(indice).setDescripcion(descripcion);
+                
+                System.out.println("La descripcion del delito se modifico correctamente");
+                System.out.println();
+                break;
+                
+            case 2:
+                
+                break;
+                
+            case 3:
+                
+                break;
+                
+            case 4:
+                
+                break;
+                
+            case 5:
+                
+                break;
+                
+            case 6:
+                
+                break;
+                
+            case 7:
+                
+                break;
+                
+            default: System.out.println("La opcion ingresada no es valida!");
+                System.out.println();
+        }
+
+    }
+
 }
